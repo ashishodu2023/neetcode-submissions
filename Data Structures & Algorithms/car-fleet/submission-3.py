@@ -1,0 +1,25 @@
+
+class Solution:
+
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+
+        if not position or not speed:
+            return 0 
+        
+        cars = sorted(zip(position,speed),reverse=True)
+        
+        max_time = 0 
+        car_fleet = 0 
+
+
+        for pos,spd in cars:
+
+            time = ( target - pos )/spd 
+
+            if time >max_time:
+                car_fleet+=1
+
+                max_time = time
+        return car_fleet
+
+        
